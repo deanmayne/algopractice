@@ -32,16 +32,32 @@
 
 // console.log(solution(-999));
 
+function solution(S, K) {
+  let days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
 
-function solution (S,K){
+  S = days.indexOf(S);
 
-    let days = ["Mon", "Tue", "Wed", "Thu","Fri", "Sat", "Sun"]
-
-    S = days.indexOf(S);
-
-
-    return days[(S + K ) % days.length]
-
+  return days[(S + K) % days.length];
 }
 
-console.log(solution("Sat",23))
+// console.log(solution("Sat", 23));
+
+function adjacentDuplicates(s, k) {
+  let unchecked = true;
+  while (unchecked) {
+    unchecked = false;
+
+    s.split("").forEach((letter) => {
+      if (s.match(letter.repeat(k))) {
+        s = s.replace(letter.repeat(k), "");
+        unchecked = true;
+      }
+    });
+  }
+
+  return s;
+}
+
+// console.log(adjacentDuplicates("pbbcggttciiippooaais", 2));
+
+
