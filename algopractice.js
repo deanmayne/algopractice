@@ -61,3 +61,5 @@ function adjacentDuplicates(s, k) {
 // console.log(adjacentDuplicates("pbbcggttciiippooaais", 2));
 
 
+
+
