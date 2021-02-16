@@ -72,7 +72,20 @@ function adjacentDuplicates(s, k) {
 //   return count;
 // }
 
-// console.log(playlist([4,10,50,90,30]))
+const playlist = (songs) => {
+  const appearDic = {};
+  let ans = 0;
+  songs.forEach((song) => {
+    const mod = song % 60;
+    const left = (60 - mod) % 60;
+    ans += appearDic[left] ? appearDic[left] : 0;
+    appearDic[mod] = appearDic[mod] ? appearDic[mod] + 1 : 1;
+  });
+  console.log(appearDic)
+  return ans;
+};
+
+console.log(playlist([4,10,50,90,30]))
 
 
 
@@ -93,6 +106,23 @@ function getUmbrellas(requirement, sizes) {
 
 }
 
+// const solve = (people, umbrellas) => {
+//   const biggerUmbrella = Math.max(...umbrellas);
+//   const remain = people % biggerUmbrella;
+//   const peopleThatFit = Math.floor(people / biggerUmbrella);
+
+//   if (remain >= 1 && umbrellas.length === 1) {
+//     return -1;
+//   } else {
+//     const remainingUmbrellas = umbrellas.filter(
+//       (umbrella) => umbrella !== biggerUmbrella
+//     );
+//     return remain !== 0
+//       ? solve(remain, remainingUmbrellas) + peopleThatFit
+//       : peopleThatFit;
+//   }
+// };
 
 
-console.log(getUmbrellas(6, [4,1,3]));
+
+// console.log(getUmbrellas(6, [4,1,3]));
