@@ -60,6 +60,40 @@ function adjacentDuplicates(s, k) {
 
 // console.log(adjacentDuplicates("pbbcggttciiippooaais", 2));
 
+function playlist(songs) {
+  let count = 0;
+  for (let i = 0; i < songs.length; i++) {
+    for (let j = 0; j < songs.length; j++) {
+      if ((songs[i] + songs[j]) % 60 === 0 && i < j) {
+        count += 1;
+      }
+    }
+  }
+  return count;
+}
+
+// console.log(playlist([4,10,50,90,30]))
+
+function getUmbrellas(requirement, sizes) {
+
+    let array = sizes.sort((a, b) => b - a);
+    let count = 0;
+    for (let i = 0; i < array.length; i ++){
+
+        let test = Math.floor(requirement / array[i])
+        
+        if (requirement - test > 0){
+            requirement -= test * array[i]
+            count += test
+        }
+
+        if (requirement  - test < 0 && count === 0 ) return -1
+
+    }
+
+    return count
 
 
+}
 
+console.log(getUmbrellas(6, [4,1,3]));
