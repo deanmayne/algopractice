@@ -126,3 +126,10 @@ function getUmbrellas(requirement, sizes) {
 
 
 // console.log(getUmbrellas(6, [4,1,3]));
+
+
+function fibonacci(num) {
+  if (num <= 1) return 1;
+
+  return fibonacci(num - 1) + fibonacci(num - 2);
+}
