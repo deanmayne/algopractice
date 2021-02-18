@@ -81,11 +81,11 @@ const playlist = (songs) => {
     ans += appearDic[left] ? appearDic[left] : 0;
     appearDic[mod] = appearDic[mod] ? appearDic[mod] + 1 : 1;
   });
-  console.log(appearDic)
+//   console.log(appearDic)
   return ans;
 };
 
-console.log(playlist([4,10,50,90,30]))
+// console.log(playlist([4,10,50,90,30]))
 
 
 
