@@ -81,29 +81,23 @@ const playlist = (songs) => {
     ans += appearDic[left] ? appearDic[left] : 0;
     appearDic[mod] = appearDic[mod] ? appearDic[mod] + 1 : 1;
   });
-//   console.log(appearDic)
+  //   console.log(appearDic)
   return ans;
 };
 
 // console.log(playlist([4,10,50,90,30]))
 
-
-
 function getUmbrellas(requirement, sizes) {
+  let count = [];
 
-    let count = [];
+  sizes.forEach((size) => {
+    if (requirement % size === 0) {
+      count.push(requirement / size);
+    }
+  });
 
-    sizes.forEach((size)=>{
-        if (requirement % size === 0 ){
-            count.push(requirement / size);
-        }
-
-    })
-
-    if (count.length === 0 ) return - 1
-    return Math.min(...count)
-
-
+  if (count.length === 0) return -1;
+  return Math.min(...count);
 }
 
 // const solve = (people, umbrellas) => {
@@ -123,13 +117,37 @@ function getUmbrellas(requirement, sizes) {
 //   }
 // };
 
-
-
 // console.log(getUmbrellas(6, [4,1,3]));
-
 
 function fibonacci(num) {
   if (num <= 1) return 1;
 
   return fibonacci(num - 1) + fibonacci(num - 2);
 }
+
+let arr = [3, -6, 5, -2, 1];
+function minStart(arr) {
+  let result = 1;
+  let unchecked = true;
+  
+  
+  while (unchecked) {
+      unchecked = false;
+      let acc = result;
+    for (let i = 0; i < arr.length; i++) {
+        acc += arr[i]
+
+      if (acc < 1) {
+        result += 1;
+        unchecked = true;
+        break
+      }
+      
+      
+    }
+  }
+
+  return result;
+}
+
+console.log(minStart(arr));
