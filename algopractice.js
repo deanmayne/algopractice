@@ -242,3 +242,18 @@ function countPairs(numbers, k) {
 
   return count;
 }
+
+function finalInstances(instances, averageUtil) {
+  for (let i = 0; i < averageUtil.length; i++) {
+    if (averageUtil[i] < 25 && instances > 1) {
+      instances = Math.ceil(instances / 2);
+      i += 10;
+    }
+
+    if (averageUtil[i] > 60 && instances * 2 < 2 * 10 ** 8) {
+      instances *= 2;
+      i += 10;
+    }
+  }
+  return instances;
+}
