@@ -184,3 +184,61 @@ function caesarCipher(str, shift) {
 
   return result.join("");
 }
+
+function anagram(word1, word2) {
+  let a = word1.split("").sort().join("");
+  let b = word2.split("").sort().join("");
+
+  return a === b ? true : false;
+}
+
+function funWithAnagrams(text) {
+  let unchecked = true;
+  while (unchecked) {
+    unchecked = false;
+    for (let i = 0; i < text.length; i++) {
+      for (let j = 0; j < text.length; j++) {
+        if (i < j && anagram(text[i], text[j])) {
+          text.splice(j, 1);
+          unchecked = true;
+        }
+      }
+    }
+  }
+
+  return text.sort();
+}
+
+
+function maximumOccurringCharacter(text) {
+  let max = 0;
+  let result = "";
+  let letters = text.split("");
+  for (let i = 0; i < letters.length; i++) {
+    let temp = letters.filter((letter) => letter === letters[i]).length;
+    if (max < temp) {
+      max = temp;
+      result = letters[i];
+    }
+  }
+
+  return result;
+}
+
+function countPairs(numbers, k) {
+  let nums = {};
+  numbers.forEach((number) => {
+    if (!nums[number]) {
+      nums[number] = 0;
+    }
+  });
+
+  let count = 0;
+  Object.keys(nums).forEach((number) => {
+    if (nums[Number(number) + Number(k)] !== undefined) {
+      count += 1;
+    }
+  });
+
+  return count;
+}
