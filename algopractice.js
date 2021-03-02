@@ -270,3 +270,22 @@ function binarySearch(arr, target) {
         return mid;
     }
 }
+
+function permutations(array) {
+//  array = str.split()
+  if (array.length <= 1) {
+    return [array];
+  }
+  const result = [];
+  const first = array.pop();
+  const prevPerms = permutations(array);
+
+  prevPerms.forEach((perm) => {
+    for (let i = 0; i <= perm.length; i++) {
+      let nextPerm = perm.slice(0, i).concat([first]).concat(perm.slice(i));
+      result.push(nextPerm);
+    }
+  });
+
+  return result;
+}
