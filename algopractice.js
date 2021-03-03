@@ -289,3 +289,23 @@ function permutations(array) {
 
   return result;
 }
+
+function removeDuplicates(s, k) {
+  let noDupes = false;
+  let arr = s.split("");
+  while (!noDupes) {
+    noDupes = true;
+    for (let i = 0; i <= arr.length - k; i++) {
+      let sub = arr.slice(i, i + k);
+      if (sub.join("") === sub[0].repeat(k)) {
+        console.log("sub", i, sub);
+        arr.splice(i, k);
+        // console.log("arr", arr)
+        i -= 1;
+        noDupes = false;
+      }
+    }
+  }
+
+  return arr.join("");
+}
