@@ -331,3 +331,28 @@ function maxCandies(candyType) {
 }
 
 console.log(maxCandies([1, 1, 2, 2, 3, 3]));
+
+
+function isAnagram(s, t) {
+  if (s.length !== t.length) return false;
+
+  let count = {};
+
+  for (let i = 0; i < s.length; i++) {
+    if (count[s[i]]) {
+      count[s[i]] += 1;
+    } else {
+      count[s[i]] = 1;
+    }
+  }
+
+  for (let i = 0; i < t.length; i++) {
+    if (count[t[i]]) {
+      count[t[i]] -= 1;
+    } else {
+      count[t[i]] = 1;
+    }
+  }
+
+  return Object.values(count).every((num) => num === 0);
+}
