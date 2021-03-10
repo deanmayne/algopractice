@@ -432,3 +432,23 @@ const dfs = (grid, row, col, totalRow, totalCol) => {
     
     
 }
+
+function reverseLinkedList(linkedlist) {
+  let node = linkedlist.head;
+  let first = node;
+  let next = null;
+  let prev = null;
+
+  while ((next = node.next)) {
+    node.next = prev;
+    prev = node;
+    node = next;
+  }
+
+  linkedlist.head = node;
+  linkedlist.head.next = prev;
+  linkedlist.tail = first;
+
+  return linkedlist;
+}
+
