@@ -479,3 +479,29 @@ function minSetSize(arr) {
 
     return 0;
 };
+
+
+function getShortestUniqueSubstring(arr, str) {
+
+  let subString = subStrings(str); 
+  let final = [];
+
+  for (let i = 0; i < subString.length; i++) {
+    let sub = subString[i]; 
+
+    if (stringIncludeKey(arr, sub)) {
+      final.push(sub);
+    }
+  }
+
+
+  if (final.length === 0) return "";
+  let shortest = final[0];
+  for (let i = 0; i < final.length; i++) {
+    let current = final[i];
+    if (current.length < shortest.length) {
+      shortest = current;
+    }
+  }
+  return shortest;
+}
