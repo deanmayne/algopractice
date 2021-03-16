@@ -575,3 +575,17 @@ let bankCode = 'AB11'
 let accountNumber = "18-7654321";
 
 console.log(checkDetailsAreValid(accountNumber, bankCode))
+
+function isUnique(string) {
+  let newStr = "";
+
+  for (let i = 0; i < string.length; i++) {
+    if (newStr.includes(string[i])) {
+      return false;
+    } else {
+      newStr += string[i];
+    }
+  }
+
+  return true;
+}
