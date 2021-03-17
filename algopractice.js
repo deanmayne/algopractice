@@ -589,3 +589,25 @@ function isUnique(string) {
 
   return true;
 }
+
+function checkPermutation(string1, string2){
+    let obj = {};
+
+    string1.split('').forEach(char => {
+        if(!obj[char]){
+            obj[char] = 1;
+        } else {
+            obj[char] += 1
+        }
+    })
+
+    string2.split('').forEach(char => {
+        if(!obj[char]){
+            obj[char] = 1
+        } else {
+            obj[char] -= 1
+        }
+    })
+
+    return Object.values(obj).every(val => val === 0);
+}
