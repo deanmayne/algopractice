@@ -647,10 +647,12 @@ class Board {
   setToken(row, col, token) {
     if (row > this.bb[0].length || col > this.bb.length) {
       throw "position given is out of bounds";
+      return
     }
 
     if (this.bb[row][col] === "X" || this.bb[row][col] === "O") {
       throw "position is already taken";
+      return
     }
 
     this.bb[row][col] = token;
