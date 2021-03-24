@@ -670,3 +670,50 @@ board.setToken(1, 1, "X");
 board.setToken(2, 2, "X");
 board.setToken(3, 3, "X");
 
+
+
+
+function deviceNamesSystem(devicenames) {
+  let result = [];
+
+  devicenames.forEach((devicename) => {
+    if (result.includes(devicename)) {
+      let checked = false;
+      let int = 1;
+      while (!checked) {
+        checked = true;
+        if (result.includes(devicename + `${int}`)) {
+          int++;
+          checked = false;
+        } else {
+          result.push(devicename + `${int}`);
+        }
+      }
+    } else {
+      result.push(devicename);
+    }
+  });
+
+  return result;
+}
+
+function countTeams(skills, minPlayers, minLevel, maxLevel) {
+  let newSkills = skills.filter(
+    (skill) => skill >= minLevel && skill <= maxLevel
+  );
+
+  function combinations(array) {
+    return new Array(1 << array.length)
+      .fill()
+      .map((e1, i) => array.filter((e2, j) => i & (1 << j)));
+  }
+
+  return combinations(newSkills).filter((item) => item.length >= minPlayers)
+    .length;
+}
+
+function combinations(array) {
+  return new Array(1 << array.length)
+    .fill()
+    .map((e1, i) => array.filter((e2, j) => i & (1 << j)));
+}
