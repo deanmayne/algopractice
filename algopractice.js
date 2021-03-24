@@ -611,3 +611,60 @@ function checkPermutation(string1, string2){
 
     return Object.values(obj).every(val => val === 0);
 }
+
+
+
+class Board {
+  constructor() {
+    this.bb = [
+      ["", "", ""],
+      ["", "", ""],
+      ["", "", ""],
+    ];
+  }
+
+  printBoard() {
+    //iterate over each "row" in the matrix
+    // console.log each row with pipes surrounding each second element
+
+    this.bb.forEach((row) => {
+      let temp = "";
+      row.forEach((ele, i) => {
+        if (ele === "") {
+          ele = "-";
+        }
+
+        if (i === 1) {
+          temp += "|" + ele + "|";
+        } else {
+          temp += ele;
+        }
+      });
+      console.log(temp);
+    });
+  }
+
+  setToken(row, col, token) {
+    if (row > this.bb[0].length || col > this.bb.length) {
+      throw "position given is out of bounds";
+    }
+
+    if (this.bb[row][col] === "X" || this.bb[row][col] === "O") {
+      throw "position is already taken";
+    }
+
+    this.bb[row][col] = token;
+
+    this.printBoard();
+  }
+}
+
+const board = new Board();
+
+board.printBoard();
+
+board.setToken(0, 0, "X");
+board.setToken(1, 1, "X");
+board.setToken(2, 2, "X");
+board.setToken(3, 3, "X");
+
